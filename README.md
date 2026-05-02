@@ -488,7 +488,7 @@ X-Hop-Count: 3
 
 ---
 
-## Tests
+## Testing
 
 ### Running tests
 
