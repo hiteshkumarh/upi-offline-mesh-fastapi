@@ -152,7 +152,7 @@ First run may take a few seconds to install dependencies
 
 
 ---
-## Demo flow 
+## Demo flow flow (step-by-step)
 
 The dashboard provides controls to simulate the complete offline payment pipeline.
 
