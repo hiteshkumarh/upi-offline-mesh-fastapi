@@ -1,37 +1,7 @@
-# UPI Offline Mesh (Python FastAPI)
+# UPI Offline Mesh — FastAPI Demo
 
-## Description
+A FastAPI backend that demonstrates **offline UPI payments routed through a mesh network simulation**.
 
-A distributed offline payment system using Bluetooth mesh simulation and secure cryptography.
+Imagine being in a location with zero internet connectivity. You send your friend ₹500. Your device encrypts the payment and broadcasts it to nearby devices. The transaction propagates hop-by-hop across a mesh network until a device regains internet access and uploads it to the backend. The backend then securely decrypts, validates, deduplicates, and settles the transaction.
 
-## Features
-
-* Offline payment simulation
-* RSA + AES encryption
-* Idempotent transaction handling
-* Mesh network packet propagation
-* SQLite transactional backend
-* FastAPI REST APIs
-
-## Tech Stack
-
-* Python (FastAPI)
-* SQLAlchemy
-* SQLite
-* Cryptography
-
-## How to Run
-
-```bash
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-Open:
-http://127.0.0.1:8000
-
-## Demo Flow
-
-1. Inject payment
-2. Gossip packets
-3. Flush to backend
+This repository contains the **Python FastAPI backend** along with a **software-based mesh simulator**, allowing the complete offline payment flow to be demonstrated on a single system without requiring real Bluetooth hardware.
