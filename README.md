@@ -305,7 +305,7 @@ This flow demonstrates:
 └─────────────────────────────────────────────────────────────────────────┘
 
 
-## Core challenges and how they’re solved
+## Core challenges and solutions
 
 ### Problem 1: Untrusted intermediaries
 
