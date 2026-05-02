@@ -19,7 +19,7 @@ This repository contains the **Python FastAPI backend** along with a **software-
 7. [API reference](#api-reference)
 8. [Testing](#testing)
 9. [Production considerations](#production-considerations)
-10. [Limitations of the approach](#limitations)
+10. [Limitations of the approach](#limitations-of-the-approach)
 
 ---
 ---
