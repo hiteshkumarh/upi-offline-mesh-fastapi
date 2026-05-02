@@ -269,44 +269,47 @@ This flow demonstrates:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         SENDER DEVICE (offline)                          │
-│  PaymentInstruction { sender, receiver, amount, pinHash, nonce, time }  │
+│                         SENDER DEVICE (offline)                         │
+│                                                                         │
+│  PaymentInstruction                                                     │
+│  { sender, receiver, amount, pinHash, nonce, time }                     │
+│                                                                         │
 │              │                                                          │
-│              ▼ encrypt with server's RSA public key                     │
-│   MeshPacket { packetId, ttl, createdAt, ciphertext }                   │
+│              ▼ Encrypt with server's RSA public key                     │
+│                                                                         │
+│  MeshPacket                                                             │
+│  { packetId, ttl, createdAt, ciphertext }                               │
 └──────────────────────────────────────┬──────────────────────────────────┘
+                                       │
                                        │ Mesh gossip (device-to-device)
                                        ▼
-        ┌─────────┐  hop   ┌─────────┐  hop   ┌─────────┐
-        │ device1 │ ─────▶ │ device2 │ ─────▶ │ bridge  │ ◀── regains internet
+        ┌─────────┐        ┌─────────┐        ┌─────────┐
+        │ device1 │ ─────▶ │ device2 │ ─────▶ │ bridge  │
         └─────────┘        └─────────┘        └────┬────┘
                                                    │
-                                                   ▼ HTTPS POST
+                                                   │ Regains internet
+                                                   ▼
+                                             HTTPS POST
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                      FASTAPI BACKEND (this project)                     │
+│                      FASTAPI BACKEND                                    │
 │                                                                         │
 │  POST /api/bridge/ingest                                                │
-│       │                                                                 │
-│       ▼                                                                 │
-│  [1] Hash ciphertext (SHA-256)                                          │
-│       │                                                                 │
-│       ▼                                                                 │
-│  [2] IdempotencyService.claim(hash)                                     │
-│       │   (thread-safe atomic check; duplicates rejected early)         │
-│       ▼                                                                 │
-│  [3] HybridCryptoService.decrypt(ciphertext)                            │
-│       │   (RSA-OAEP unwraps AES key, AES-GCM decrypts payload           │
-│       │    and verifies integrity via authentication tag)               │
-│       ▼                                                                 │
-│  [4] Freshness validation (timestamp within allowed window)             │
-│       │                                                                 │
-│       ▼                                                                 │
-│  [5] SettlementService.settle()                                         │
-│       │   (atomic DB transaction: debit sender, credit receiver,        │
-│       │    write transaction ledger)                                    │
+│                                                                         │
+│   [1] Hash ciphertext (SHA-256)                                         │
+│        │                                                                │
+│   [2] IdempotencyService.claim(hash)                                    │
+│        │  (Thread-safe atomic check; duplicates rejected early)         │
+│   [3] HybridCryptoService.decrypt(ciphertext)                           │
+│        │  (RSA-OAEP unwraps AES key, AES-GCM decrypts & verifies)       │
+│   [4] Freshness validation                                              │
+│        │  (Timestamp within allowed window)                             │
+│   [5] SettlementService.settle()                                        │
+│           (Atomic DB transaction:                                       │
+│            - Debit sender                                               │
+│            - Credit receiver                                            │
+│            - Write transaction ledger)                                  │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
-
 
 ## Core challenges and solutions
 
