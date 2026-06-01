@@ -396,37 +396,37 @@ If an old packet is replayed:
 
 ---
 
-## Project Structure
----
+## 📂 Project Structure
+
+```text
 upi-offline-mesh-fastapi/
 ├── db/
 │   └── database.py                # Database setup (SQLite + SQLAlchemy)
 ├── models/
-│   ├── account.py                # Account model (balances, versioning)
-│   └── transaction.py            # Transaction ledger model
+│   ├── account.py                 # Account model (balances, versioning)
+│   └── transaction.py             # Transaction ledger model
 ├── routers/
-│   ├── api_controller.py         # REST API endpoints
-│   └── dashboard_controller.py   # Serves dashboard UI
+│   ├── api_controller.py          # REST API endpoints
+│   └── dashboard_controller.py    # Serves dashboard UI
 ├── schemas/
-│   ├── mesh_packet.py            # Packet structure (encrypted payload)
-│   └── payment_instruction.py    # Decrypted transaction payload
+│   ├── mesh_packet.py             # Packet structure (encrypted payload)
+│   └── payment_instruction.py     # Decrypted transaction payload
 ├── services/
-│   ├── bridge_ingestion_service.py   # Core pipeline: hash → claim → decrypt → settle
-│   ├── demo_service.py               # Seeds data + simulates sender device
-│   ├── hybrid_crypto_service.py     # RSA + AES-GCM encryption/decryption
-│   ├── idempotency_service.py       # Duplicate detection (thread-safe)
-│   ├── mesh_simulator_service.py    # Simulates device-to-device gossip
-│   ├── server_key_holder.py         # RSA keypair management
-│   ├── settlement_service.py        # Atomic debit/credit transactions
-│   └── virtual_device.py            # Simulated mesh device
+│   ├── bridge_ingestion_service.py # Core pipeline: hash → claim → decrypt → settle
+│   ├── demo_service.py             # Seeds data and simulates sender device
+│   ├── hybrid_crypto_service.py    # RSA + AES-GCM encryption/decryption
+│   ├── idempotency_service.py      # Duplicate detection (thread-safe)
+│   ├── mesh_simulator_service.py   # Simulates device-to-device gossip
+│   ├── server_key_holder.py        # RSA keypair management
+│   ├── settlement_service.py       # Atomic debit/credit transactions
+│   └── virtual_device.py           # Simulated mesh device
 ├── templates/
-│   └── dashboard.html              # Frontend UI for demo
-├── main.py                         # FastAPI application entry point
-├── requirements.txt                # Python dependencies
+│   └── dashboard.html             # Frontend dashboard UI
+├── main.py                        # FastAPI application entry point
+├── requirements.txt               # Project dependencies
 ├── .gitignore
 └── README.md
-
----
+```
 
 ## API Reference
 
