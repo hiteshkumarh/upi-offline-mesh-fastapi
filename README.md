@@ -397,7 +397,7 @@ If an old packet is replayed:
 ---
 
 ## Project Structure
-
+---
 upi-offline-mesh-fastapi/
 ├── db/
 │   └── database.py                # Database setup (SQLite + SQLAlchemy)
