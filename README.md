@@ -370,6 +370,7 @@ def claim(packet_hash):
 
 Additionally, a **unique constraint on `packet_hash`** in the database acts as a fallback to prevent duplicate settlements.
 
+![Problem 2](problem%202.png)
 ---
 
 ### Problem 3: Replay attacks
@@ -395,6 +396,7 @@ If an old packet is replayed:
 * It fails freshness validation
 * Or is rejected by idempotency checks
 
+![Problem 3](problem%203.png)
 ---
 
 ## 📂Project structure
