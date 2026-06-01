@@ -396,7 +396,7 @@ If an old packet is replayed:
 
 ---
 
-## 📂 Project Structure
+## 📂Project structure
 
 ```text
 upi-offline-mesh-fastapi/
