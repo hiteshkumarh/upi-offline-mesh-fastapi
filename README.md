@@ -335,6 +335,7 @@ Since RSA is inefficient for large payloads, a hybrid encryption approach is use
 **Why AES-GCM?**
 AES-GCM provides authenticated encryption. Any modification to the ciphertext results in authentication failure during decryption, ensuring data integrity and preventing tampering.
 
+![Problem 1](problem%201.png)
 ---
 
 ### Problem 2: Duplicate transaction processing
