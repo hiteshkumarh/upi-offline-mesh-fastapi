@@ -3,7 +3,7 @@ from db.database import Base
 import enum
 from datetime import datetime
 
-class TransactionStatus(enum.Enum):
+class TransactionStatus(enum.Enum): 
     SETTLED = "SETTLED"
     REJECTED = "REJECTED"
 
