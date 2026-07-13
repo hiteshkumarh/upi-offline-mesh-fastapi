@@ -8,7 +8,7 @@ This repository contains the **Python FastAPI backend** along with a **software-
 
 ---
 
-## Table of Contents
+## Table of Contents 
 
 1. [What this demo proves](#what-this-demo-proves)
 2. [How to run it](#how-to-run-it)
