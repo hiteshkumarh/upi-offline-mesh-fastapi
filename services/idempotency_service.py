@@ -4,7 +4,7 @@ import time
 class IdempotencyService:
     def __init__(self, ttl_seconds: int = 86400): 
         self.seen = {}
-        self.lock = threading.Lock()
+        self.lock = threading.Lock()  
         self.ttl_seconds = ttl_seconds
 
     def claim(self, packet_hash: str) -> bool:
