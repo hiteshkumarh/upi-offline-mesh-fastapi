@@ -7,7 +7,7 @@ Imagine being in a location with zero internet connectivity. You send your frien
 This repository contains the **Python FastAPI backend** along with a **software-based mesh simulator**, allowing the complete offline payment flow to be demonstrated on a single system without requiring real Bluetooth hardware.
                
 ---  
-
+ 
 ## Table of Contents    
 
 1. [What this demo proves](#what-this-demo-proves)
